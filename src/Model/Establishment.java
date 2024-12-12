@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Establishment {
     public String name;
@@ -11,9 +12,5 @@ public class Establishment {
         this.name = name;
         this.ownerName = ownerName;
         this.products = new ArrayList<>();
-    }
-
-    public void addProduct(Product product){
-        this.products.add(product);
     }
 }
