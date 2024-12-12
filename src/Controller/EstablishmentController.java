@@ -4,9 +4,14 @@ import java.util.Scanner;
 
 import Model.Establishment;
 import Model.Product;
+import Traits.Functions;
 
 public class EstablishmentController {
     private Establishment establishment;
+
+    public Establishment getEstablishment(){
+        return this.establishment;
+    }
 
     public void createEstablishment(){
         Scanner input = new Scanner(System.in);
@@ -20,11 +25,7 @@ public class EstablishmentController {
         this.establishment = new Establishment(establishmentName, establishmentOwner);
     }
 
-    public Establishment getEstablishment(){
-        return this.establishment;
-    }
-
-     public void addProduct(){
+    public void addProduct(){
         Scanner input = new Scanner(System.in);
 
         System.out.println("Qual é o nome do produto novo?");
@@ -37,10 +38,9 @@ public class EstablishmentController {
         Byte productQuantity = input.nextByte();
 
         Product product = new Product(productName, productPrice, productQuantity);
-        this.establishment.products.add(product);
 
-        System.out.println("O nome do produto é: " + product.name);
-        System.out.println("O preço do produto é: " + product.price);
+        this.establishment.products.add(product);
+        this.establishment.stockValue += (Functions.convertDoubleToAmericanFormat(productPrice) * productQuantity);
 
         input.nextLine();
     }

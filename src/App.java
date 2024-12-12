@@ -1,32 +1,23 @@
 import java.util.Scanner;
 
 import Controller.EstablishmentController;
+import Config.DBConnection;
 import Model.Establishment;
 import Model.Product;
 import Traits.Functions;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Scanner input = new Scanner(System.in);
-        EstablishmentController establishmentController = new EstablishmentController();
-        short numberOfProducts;
+        DBConnection connection = new DBConnection("inventory-system", "root", "123");
 
-        establishmentController.createEstablishment();
+        connection.connect();
 
-        Establishment currentEstablishment = establishmentController.getEstablishment();
+        // EstablishmentController establishmentController = new EstablishmentController();
 
-        System.out.println("Muito bem, " + currentEstablishment.ownerName + ". Vamos contar o estoque do estabelecimento " + currentEstablishment.name.toUpperCase());
+        // establishmentController.createEstablishment();
 
-        System.out.println("Quantos produtos tu desejas inserir?");
-        numberOfProducts = input.nextShort();
-        input.nextLine();
+        // Establishment currentEstablishment = establishmentController.getEstablishment();
 
-        for(short i = 0; i < numberOfProducts; i++){
-            establishmentController.addProduct();
-        }
-
-        for(Product product : currentEstablishment.products){
-            System.out.println("O preço do produto " + product.name + " é " + Functions.getDoubleInBrazilianFormat(product.price) + " reais.");
-        }
+        // establishmentController.addProduct();
     }
 }
