@@ -1,4 +1,4 @@
-package Traits;
+package main.Traits;
 
 public class Functions {
     public static double convertDoubleToAmericanFormat(String price){

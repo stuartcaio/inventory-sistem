@@ -1,6 +1,6 @@
-package Model;
+package main.Model;
 
-import Traits.Functions;
+import main.Traits.Functions;
 
 public class Product {
     public String name;

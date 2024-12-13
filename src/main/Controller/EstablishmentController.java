@@ -1,10 +1,10 @@
-package Controller;
+package main.Controller;
 
 import java.util.Scanner;
 
-import Model.Establishment;
-import Model.Product;
-import Traits.Functions;
+import main.Model.Establishment;
+import main.Model.Product;
+import main.Traits.Functions;
 
 public class EstablishmentController {
     private Establishment establishment;
