@@ -1,23 +1,26 @@
 package main.Config;
 
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public class DBConnection {
-    private String DBName, user, password;
+    FileReader fileReader;
 
-    public DBConnection(String DBName, String user, String password){
-        this.DBName = DBName;
-        this.user = user;
-        this.password = password;
+    public DBConnection(FileReader fileReader){
+        this.fileReader = fileReader;
     };
 
     public Connection connect(){
         Connection conn = null;
 
         try{
+            Properties properties = new Properties();
+            properties.load(this.fileReader);
+
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + this.DBName, this.user, this.password);
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + properties.getProperty("db_name"), properties.getProperty("username"), properties.getProperty("password"));
 
             if(conn != null){
                 System.out.println("Conexão realizada com sucesso!");
